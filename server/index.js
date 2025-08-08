@@ -10,13 +10,22 @@ app.use(cors());
 
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:5173',
+        origin: '*',
         methods: ['GET', 'POST']
     }
 });
 
 io.on('connection', (socket) => {
-    console.log("Connected with ID: ", socket.id)
+    console.log("Connected with ID: ", socket.id);
+
+    socket.on('show-name', (data) => {
+        console.log('name', data);
+        socket.broadcast.emit('get-name', data);
+    });
+    socket.on('send-toast', (data) => {
+        console.log(data.sender);
+        socket.broadcast.emit('get-toast', data.sender);
+    })
 });
 
 const PORT = 3000;
