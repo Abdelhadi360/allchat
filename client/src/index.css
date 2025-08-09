@@ -12,6 +12,16 @@
   --font-poppins: "Poppins", sans-serif;
 }
 
+@layer utilities {
+  .mesh-gradient {
+    background-image: linear-gradient(32deg, #0fb82b, #08a389);
+  }
+  .active {
+    background: var(--accent);
+    color: var(--foreground);
+  }
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -124,7 +134,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-poppins;
+    @apply bg-background text-foreground font-roboto;
   }
   p, span {
     @apply font-roboto;

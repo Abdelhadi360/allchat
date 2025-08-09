@@ -22,8 +22,8 @@ import { NavLink } from 'react-router-dom';
 const navigationLinks = [
   { href: "/", label: "Home", active: true },
   { href: "/chat", label: "Chat" },
-  { href: "#", label: "Pricing" },
-  { href: "#", label: "About" },
+  { href: "/Terms", label: "Pricing" },
+  { href: "Policy", label: "About" },
 ]
 
 export default function NavBar() {

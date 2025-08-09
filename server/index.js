@@ -18,10 +18,11 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
     console.log("Connected with ID: ", socket.id);
 
-    socket.on('show-name', (data) => {
+    socket.on('send-name', (data) => {
         console.log('name', data);
         socket.broadcast.emit('get-name', data);
     });
+    
     socket.on('send-toast', (data) => {
         console.log(data.sender);
         socket.broadcast.emit('get-toast', data.sender);

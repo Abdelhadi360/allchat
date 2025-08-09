@@ -4,6 +4,7 @@ import Chat from './Chat';
 import Signup from './Signup';
 import Home from './Home';
 import Navbar from '@/components/navbar';
+import ProtectedRoute from './ProtectedRoute';
 
 export default function App() {
   return (
@@ -12,7 +13,14 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/chat' element={<Chat />} />
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoute>
+                <Chat />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </div>
     </BrowserRouter>

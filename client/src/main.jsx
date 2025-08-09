@@ -8,6 +8,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from 'sonner';
 import { dark, shadcn, shadesOfPurple } from '@clerk/themes';
 import Home from './Home.jsx';
+import ClerkUserSync from './ClerkUserSync.jsx';
 
 
 // Import your Publishable Key
@@ -24,6 +25,7 @@ createRoot(document.getElementById('root')).render(
         <AppSidebar />
         
         <App />
+        <ClerkUserSync />
         <Toaster richColors />
       </SidebarProvider>
       

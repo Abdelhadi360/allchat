@@ -23,7 +23,7 @@ export default function UserCard() {
 
     useEffect(() => {
         if (isSignedIn) {
-            socket.emit('show-name', user.firstName);
+            socket.emit('send-name', user.firstName);
 
             socket.on('get-name', (data) => {
               setName(data);
