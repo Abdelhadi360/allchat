@@ -11,34 +11,31 @@ import { Button } from '@/components/ui/button';
 import { useUser } from "@clerk/clerk-react";
 import { use, useEffect, useState } from "react";
 import socket from "../socket";
-import { User } from "lucide-react";
+import { EllipsisVertical, User } from "lucide-react";
+import { toast } from "sonner";
 
-export default function UserCard() {
-
-    
-    
-    const { user, isSignedIn } = useUser();
-    const [name, setName] = useState("");
-    const [username, setUsername] = useState("");
-
-    useEffect(() => {
-        if (isSignedIn) {
-            socket.emit('send-name', user.firstName);
-
-            socket.on('get-name', (data) => {
-              setName(data);
-            })
-        }
-    }, [user]);
+export default function UserCard({name, username, onMessage}) {
+  
 
   return (
-    <Card>
-    <CardHeader>
-        <CardTitle className="flex items-center">
-          <User />
-          Abdelhadi
-        </CardTitle>
-    </CardHeader>
+    <Card >
+      <CardHeader>
+          <CardTitle className="flex items-center">
+            <User />
+            {name}
+          </CardTitle>
+          <CardDescription>
+            @{username}
+          </CardDescription>
+          
+          <CardFooter className='p-0 flex justify-between'>
+            <Button  onClick={onMessage}
+                    className='bg-emerald-500 dark:bg-emerald-700 hover:bg-emerald-600 text-white dark:text-gray-200 '>
+              Message
+            </Button>
+            
+          </CardFooter>
+      </CardHeader>
     
     </Card>
   )

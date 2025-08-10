@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 
-const socket = io("http://localhost:3000", {
+const socket = io("https://six-otters-shine.loca.lt", {
   secure: true,
   transports: ["websocket"], // Force WebSocket connection
 });

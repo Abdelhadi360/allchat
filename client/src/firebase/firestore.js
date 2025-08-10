@@ -27,3 +27,36 @@ export async function addUser(name, username) {
     throw err;
   }
 }
+
+
+
+export async function getAllUsernames() {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  
+  const usernames = [];
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    if (data.username) {
+      usernames.push(data.username);
+    }
+  });
+
+  return usernames;
+}
+
+export async function getAllUsers() {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  
+  const users = [];
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    if (data.username && data.name) {
+      users.push({
+        name: data.name,
+        username: data.username
+      });
+    }
+  });
+
+  return users; // [{ name: "John Doe", username: "john_doe" }, ...]
+}

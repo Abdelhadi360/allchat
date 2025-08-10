@@ -26,7 +26,7 @@ createRoot(document.getElementById('root')).render(
         
         <App />
         <ClerkUserSync />
-        <Toaster richColors />
+        
       </SidebarProvider>
       
     </ClerkProvider>
